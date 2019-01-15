@@ -7,6 +7,7 @@
 #define RO_PRICE_NEAR_FREE		10
 #define RO_PRICE_VERY_CHEAP		20
 #define RO_PRICE_CHEAP			30
+#define RO_PRICE_CHEAPISH		35
 #define RO_PRICE_NORMAL			40
 #define RO_PRICE_PRICY			60
 #define RO_PRICE_KINDA_PRICY	50
@@ -236,15 +237,34 @@ WEAPONS
 	group = "Weapons"
 
 /datum/supply_packs/flamethrower
-	name = "M240 Flamethrower crate (M240 x3)"
+	name = "M240 Flamethrower crate (M240 x1)"
+	contains = list(
+					/obj/item/weapon/gun/flamer,
+					/obj/item/ammo_magazine/flamer_tank,
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "\improper M240 Flamethrower crate"
+	group = "Weapons"
+
+
+/datum/supply_packs/flamethrower_squad
+	name = "M240 Flamethrower set crate (M240 x5)"
 	contains = list(
 					/obj/item/weapon/gun/flamer,
 					/obj/item/weapon/gun/flamer,
-					/obj/item/weapon/gun/flamer
+					/obj/item/weapon/gun/flamer,
+					/obj/item/weapon/gun/flamer,
+					/obj/item/weapon/gun/flamer,
+					/obj/item/ammo_magazine/flamer_tank,
+					/obj/item/ammo_magazine/flamer_tank,
+					/obj/item/ammo_magazine/flamer_tank,
+					/obj/item/ammo_magazine/flamer_tank,
+					/obj/item/ammo_magazine/flamer_tank,
 					)
-	cost = RO_PRICE_PRICY
+	cost = RO_PRICE_VERY_PRICY
 	containertype = /obj/structure/closet/crate/weapon
-	containername = "\improper M240 Flamethrower crate"
+	containername = "\improper M240 Flamethrower squad crate"
 	group = "Weapons"
 
 /datum/supply_packs/weapons_sentry
@@ -360,7 +380,7 @@ WEAPONS
 					/obj/item/ammo_magazine/rifle/lmg
 					)
 	name = "M41AE2 HPR crate (HPR x1, HPR ammo box x1)"
-	cost = RO_PRICE_VERY_CHEAP
+	cost = RO_PRICE_CHEAPISH
 	containertype = /obj/structure/closet/crate
 	containername = "\improper M41AE2 HPR crate"
 	group = "Weapons"
@@ -379,7 +399,7 @@ WEAPONS
 					/obj/item/ammo_magazine/rifle/lmg,
 					)
 	name = "M41AE2 HPR squad crate (HPR x5, HPR ammo box x5)"
-	cost = RO_PRICE_PRETTY_PRICY
+	cost = RO_PRICE_MAX_PRICY
 	containertype = /obj/structure/closet/crate
 	containername = "\improper M41AE2 HPR squad crate"
 	group = "Weapons"

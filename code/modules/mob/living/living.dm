@@ -348,10 +348,10 @@
 				now_pushing = 0
 				return
 
-		if(isXeno(src) && !isXenoLarva(src) && ishuman(L)) //We are a Xenomorph and pushing a human
+		/*if(isXeno(src) && !isXenoLarva(src) && ishuman(L)) //We are a Xenomorph and pushing a human //Anti-bodyblock commented out; not needed, negates the consequences of good and bad play alike.
 			var/mob/living/carbon/Xenomorph/X = src
 			if(X.mob_size == MOB_SIZE_BIG)
-				L.do_bump_delay = 1
+				L.do_bump_delay = 1*/
 
 		if(L.pulledby && L.pulledby != src && L.is_mob_restrained())
 			if(!(world.time % 5))
