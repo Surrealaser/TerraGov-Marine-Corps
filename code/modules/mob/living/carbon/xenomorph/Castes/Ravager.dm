@@ -10,7 +10,7 @@
 	// *** Melee Attacks *** //
 	melee_damage_lower = 40
 	melee_damage_upper = 60
-	attack_delay = -2 
+	attack_delay = -2
 
 	// *** Tackle *** //
 	tackle_damage = 55
@@ -23,7 +23,7 @@
 	plasma_gain = 10
 
 	// *** Health *** //
-	max_health = 200
+	max_health = 220
 
 	// *** Evolution *** //
 	upgrade_threshold = 400
@@ -32,7 +32,7 @@
 
 	// *** Flags *** //
 	caste_flags = CASTE_CAN_BE_QUEEN_HEALED|CASTE_CAN_BE_GIVEN_PLASMA
-	
+
 	// *** Defense *** //
 	armor_deflection = 20
 
@@ -50,7 +50,7 @@
 	// *** Melee Attacks *** //
 	melee_damage_lower = 50
 	melee_damage_upper = 70
-	attack_delay = -2 
+	attack_delay = -2
 
 	// *** Tackle *** //
 	tackle_damage = 60
@@ -63,7 +63,7 @@
 	plasma_gain = 13
 
 	// *** Health *** //
-	max_health = 250
+	max_health = 260
 
 	// *** Evolution *** //
 	upgrade_threshold = 800
@@ -82,7 +82,7 @@
 	// *** Melee Attacks *** //
 	melee_damage_lower = 55
 	melee_damage_upper = 75
-	attack_delay = -2 
+	attack_delay = -2
 
 	// *** Tackle *** //
 	tackle_damage = 65
@@ -95,7 +95,7 @@
 	plasma_gain = 14
 
 	// *** Health *** //
-	max_health = 260
+	max_health = 280
 
 	// *** Evolution *** //
 	upgrade_threshold = 1600
@@ -114,7 +114,7 @@
 	// *** Melee Attacks *** //
 	melee_damage_lower = 60
 	melee_damage_upper = 80
-	attack_delay = -2 
+	attack_delay = -2
 
 	// *** Tackle *** //
 	tackle_damage = 70
@@ -127,7 +127,7 @@
 	plasma_gain = 15
 
 	// *** Health *** //
-	max_health = 265
+	max_health = 290
 
 	// *** Evolution *** //
 	upgrade_threshold = 1600
@@ -237,7 +237,7 @@
 	// *** Melee Attacks *** //
 	melee_damage_lower = 70
 	melee_damage_upper = 90
-	attack_delay = -2 
+	attack_delay = -2
 
 	// *** Tackle *** //
 	tackle_damage = 55
