@@ -488,6 +488,8 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 #define PLASMA_TRANSFER_AMOUNT 50
 #define PLASMA_SALVAGE_AMOUNT 40
 #define PLASMA_SALVAGE_MULTIPLIER 0.5 // I'd not reccomend setting this higher than one.
+#define DRONE_SALVAGE_EVOLUTION_MULTIPLIER 0.5 // I'd not reccomend setting this higher than one.
+#define DRONE_SALVAGE_UPGRADE_MULTIPLIER 0.5 // I'd not reccomend setting this higher than one.
 
 #define CRITICAL_HIT_DELAY 25
 
