@@ -1064,8 +1064,8 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 
 	if(absorbed_plasma > (xeno_caste.plasma_max - plasma_stored) ) //Amount exceeding remaining plasma capacity absorbed as health
 		excess_plasma = absorbed_plasma - (xeno_caste.plasma_max - plasma_stored)
-		adjustFireLoss( max(-excess_plasma, -getFireLoss() ) )
-		adjustBruteLoss( max(-excess_plasma, -getBruteLoss() ) )
+		adjustFireLoss( CLAMP(-excess_plasma, -getFireLoss(), 0 ) )
+		adjustBruteLoss( CLAMP(-excess_plasma, -getBruteLoss(), 0 ) )
 		absorbed_plasma = absorbed_plasma - excess_plasma
 
 	gain_plasma(absorbed_plasma)
