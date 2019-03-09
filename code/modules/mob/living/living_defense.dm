@@ -135,6 +135,8 @@
 			emote("scream")
 
 /mob/living/carbon/Xenomorph/IgniteMob()
+	if(xeno_caste.caste_flags & CASTE_FIRE_IMMUNE)
+		return
 	. = ..()
 	if(.)
 		var/fire_light = min(fire_stacks,5)
