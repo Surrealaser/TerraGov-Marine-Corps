@@ -725,6 +725,7 @@
 
 
 /mob/living/carbon/Xenomorph/Queen/gib()
+	salvaged = TRUE
 	death(1) //we need the body to show the queen's name at round end.
 
 /mob/living/carbon/Xenomorph/Queen/death_cry()

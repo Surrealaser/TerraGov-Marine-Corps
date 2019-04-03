@@ -1,4 +1,4 @@
-#define DEBUG_XENO_ABILITIES	0
+//#define DEBUG_XENO_ABILITIES
 
 /mob/living/carbon/Xenomorph/proc/Pounce(atom/T)
 
@@ -1007,6 +1007,15 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 	to_chat(src, "<span class='xenowarning'>You have transferred [amount] units of [energy] to [target]. You now have [plasma_stored]/[xeno_caste.plasma_max].</span>")
 	playsound(src, "alien_drool", 25)
 
+/mob/living/carbon/Xenomorph/proc/can_be_salvaged()
+	return TRUE
+
+/mob/living/carbon/Xenomorph/Queen
+	var/salvaged = FALSE
+
+/mob/living/carbon/Xenomorph/Queen/can_be_salvaged()
+	return !salvaged
+
 /mob/living/carbon/Xenomorph/proc/xeno_salvage_essence(mob/living/carbon/Xenomorph/A, salvage_delay)
 	if(!isxeno(A) || !check_state() || A == src)
 		return
@@ -1017,6 +1026,10 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 
 	var/mob/living/carbon/Xenomorph/target = A
 	var/energy = isxenosilicon(src) ? "charge" : "essence"
+
+	if(!target.can_be_salvaged())
+		to_chat(src, "<span class='warning'>This has already been salvaged!</span>")
+		return
 
 	if(!isturf(loc))
 		to_chat(src, "<span class='warning'>You can't salvage [energy] from here!</span>")
@@ -1074,29 +1087,17 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 
 	gain_plasma(absorbed_plasma)
 
-	var/list/upgrade_list = list()
-	var/list/evolution_list = list()
-	var/mob/living/carbon/Xenomorph/X
-
-	for(var/i in GLOB.alive_xeno_list)
-		X = i
-		if(X.hivenumber != hivenumber)
-			continue // not our hive
-
-		if(X.xeno_caste.upgrade < 3 && X.upgrade_stored < X.xeno_caste.upgrade_threshold)
-			upgrade_list.Add(X)
-
-		if(X.xeno_caste.tier < 3 && X.evolution_stored < X.xeno_caste.evolution_threshold)
-			evolution_list.Add(X)
+	var/list/upgrade_list = hive.xenos_by_upgrade[XENO_UPGRADE_ZERO] + hive.xenos_by_upgrade[XENO_UPGRADE_ONE] + hive.xenos_by_upgrade[XENO_UPGRADE_TWO]
+	var/list/evolution_list = hive.xenos_by_tier[XENO_TIER_ONE] + hive.xenos_by_tier[XENO_TIER_TWO]
 
 	absorbed_evolution = absorbed_evolution / max(1,length(evolution_list))
 	absorbed_upgrade = absorbed_upgrade / max(1,length(upgrade_list))
-	#if DEBUG_XENO_ABILITIES
+	#ifdef DEBUG_XENO_ABILITIES
 	to_chat(world, "SALVAGE ESSENCE DEBUG: absorbed_plasma: [absorbed_plasma] absorbed_evolution: [absorbed_evolution] absorbed_upgrade: [absorbed_upgrade] target.evolution_stored: [target.evolution_stored] target.upgrade_stored: [target.upgrade_stored] ")
 	#endif
 
 	for(var/i in evolution_list)
-		X = i
+		var/mob/living/carbon/Xenomorph/X = i
 		var/evolution_gained = round(min(X.xeno_caste.evolution_threshold - X.evolution_stored, absorbed_evolution))
 		evolution_list.Remove(X) //We got ours, and thus no longer factor into calcs
 
@@ -1110,7 +1111,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 		to_chat(X, "<span class='xenodanger'>You are empowered by [src]'s contribution to the Hivemind, gaining [absorbed_evolution] evolution points. You now have [X.evolution_stored]/[X.xeno_caste.evolution_threshold] evolution points.</span>")
 
 	for(var/i in upgrade_list)
-		X = i
+		var/mob/living/carbon/Xenomorph/X = i
 		var/upgrade_gained = round(min(X.xeno_caste.upgrade_threshold - X.upgrade_stored, absorbed_upgrade))
 		upgrade_list.Remove(X) //We got ours, and thus no longer factor into calcs
 
