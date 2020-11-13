@@ -1046,3 +1046,4 @@ TUNNEL
 	user.fire_resist_modifier += 20
 	to_chat(user, "<span class='xenonotice'>We feel more vulnerable again.</span>")
 	qdel(src)
+

@@ -85,3 +85,15 @@
 	icon = 'icons/effects/progressicons.dmi'
 	icon_state = "busy_medical"
 	duration = 0.8 SECONDS
+
+/obj/effect/temp_visual/blink_portal
+	name = "blink portal"
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "anom"
+	duration = 0.5 SECONDS
+
+/obj/effect/temp_visual/banishment_portal
+	name = "banishment portal"
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "bhole3"
+	duration = 3 SECONDS
