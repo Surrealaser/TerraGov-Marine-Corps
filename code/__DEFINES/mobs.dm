@@ -555,7 +555,7 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 #define RUNNER_EVASION_RUN_DELAY			0.5 SECONDS //If the time since the Runner last moved is equal to or greater than this, its Evasion ends.
 #define RUNNER_EVASION_DANGER_RATIO			0.5 //If we have this % of auto-dodge damage remaining or less, warn the user.
 
-//Tindalos defines
+//Wraith defines
 
 #define WRAITH_PLACE_WARP_BEACON_WINDUP		3 SECONDS
 
