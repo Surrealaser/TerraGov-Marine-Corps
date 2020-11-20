@@ -76,6 +76,9 @@
 	if(closed)
 		return TRUE
 
+	if(incorporeal_movement_check(mover)) //Incorporeal things move through most solid obstacles
+		return TRUE
+
 	if(mover?.throwing)
 		if(is_wired && iscarbon(mover)) //Leaping mob against barbed wire fails
 			if(get_dir(loc, target) & dir)

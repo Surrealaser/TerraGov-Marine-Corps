@@ -85,8 +85,4 @@
 	. = ..()
 	if(isliving(AM))
 		var/mob/living/spaceman = AM
-
-		if(spaceman.status_flags & GODMODE) //Invulnerable mobs shouldn't care/take damage
-			return
-
 		spaceman.adjustFireLoss(600) //Death. Space shouldn't be entered.
