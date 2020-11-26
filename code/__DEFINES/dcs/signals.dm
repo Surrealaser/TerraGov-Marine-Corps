@@ -386,10 +386,10 @@
 #define COMSIG_XENO_OBJ_THROW_HIT "xeno_obj_throw_hit"				///from [/mob/living/carbon/xenomorph/throw_impact]: (obj/target, speed)
 #define COMSIG_XENO_NONE_THROW_HIT "xeno_none_throw_hit"			///from [/mob/living/carbon/xenomorph/throw_impact]: ()
 #define COMSIG_XENO_LIVING_THROW_HIT "xeno_living_throw_hit"		///from [/mob/living/carbon/xenomorph/throw_impact]: (mob/living/target)
-	#define COMPONENT_KEEP_THROWING (1<<0)
+	#define COMPONENT_KEEP_THROWING 1
 
 #define COMSIG_XENOMORPH_WRAITH_RECALL "xenomorph_wraith_recall"
-	#define COMPONENT_BANISH_TARGETS_EXIST 1
+	#define COMPONENT_BANISH_TARGETS_EXIST (1<<0)
 
 //human signals
 #define COMSIG_CLICK_QUICKEQUIP "click_quickequip"
