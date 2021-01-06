@@ -431,6 +431,9 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 #define XENO_HEALTH_ALERT_COOLDOWN			30 SECONDS //The cooldown on these xeno damage alerts
 #define XENO_HEALTH_ALERT_POINTER_DURATION	6 SECONDS //How long the alert directional pointer lasts.
 
+#define XENO_PARALYZE_NORMALIZATION_MULTIPLIER	5 //Multiplies an input to normalize xeno paralyze duration times.
+#define XENO_STUN_NORMALIZATION_MULTIPLIER		2 //Multiplies an input to normalize xeno stun duration times.
+
 #define CANNOT_HOLD_EGGS 0
 #define CAN_HOLD_TWO_HANDS 1
 #define CAN_HOLD_ONE_HAND 2
