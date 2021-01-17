@@ -10,6 +10,7 @@
 	do_jitter_animation(1000)
 	set_datum()
 	var/selected_ability_type = selected_ability?.type
+	SEND_SIGNAL(src, COMSIG_XENOMORPH_ABILITY_ON_PRE_UPGRADE)
 	remove_abilities()
 	add_abilities()
 	SEND_SIGNAL(src, COMSIG_XENOMORPH_ABILITY_ON_UPGRADE)
