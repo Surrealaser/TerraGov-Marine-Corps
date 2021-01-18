@@ -250,6 +250,8 @@
 		add_tick += 1
 
 /obj/machinery/miner/attack_alien(mob/living/carbon/xenomorph/xeno_attacker)
+	if(xeno_attacker.status_flags & INCORPOREAL) //Incorporeal xenos cannot attack physically.
+		return
 	xeno_attacker.do_attack_animation(src, ATTACK_EFFECT_CLAW)
 	xeno_attacker.visible_message("<span class='danger'>[xeno_attacker] slashes \the [src]!</span>", \
 	"<span class='danger'>We slash \the [src]!</span>", null, 5)
