@@ -203,6 +203,9 @@
 
 //Prying open doors
 /obj/machinery/door/airlock/attack_alien(mob/living/carbon/xenomorph/M)
+	if(M.status_flags & INCORPOREAL)
+		return FALSE
+
 	var/turf/cur_loc = M.loc
 	if(isElectrified())
 		if(shock(M, 70))

@@ -85,6 +85,9 @@
 
 
 /turf/closed/wall/resin/attack_alien(mob/living/carbon/xenomorph/M)
+	if(M.status_flags & INCORPOREAL)
+		return
+
 	M.visible_message("<span class='xenonotice'>\The [M] starts tearing down \the [src]!</span>", \
 	"<span class='xenonotice'>We start to tear down \the [src].</span>")
 	if(!do_after(M, 4 SECONDS, TRUE, M, BUSY_ICON_GENERIC))

@@ -154,6 +154,9 @@
 
 
 /obj/machinery/camera/attack_alien(mob/living/carbon/xenomorph/X)
+	if(X.status_flags & INCORPOREAL)
+		return FALSE
+
 	if(obj_integrity <= 0)
 		to_chat(X, "<span class='warning'>The camera is already disabled.</span>")
 		return

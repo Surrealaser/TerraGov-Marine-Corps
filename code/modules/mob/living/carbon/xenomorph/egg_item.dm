@@ -95,6 +95,9 @@
 
 //Deal with picking up facehuggers. "attack_alien" is the universal 'xenos click something while unarmed' proc.
 /obj/item/xeno_egg/attack_alien(mob/living/carbon/xenomorph/user)
+	if(user.status_flags & INCORPOREAL)
+		return
+
 	switch(user.xeno_caste.can_hold_eggs)
 		if(CAN_HOLD_ONE_HAND)
 			attack_hand(user)

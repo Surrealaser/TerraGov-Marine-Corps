@@ -161,6 +161,8 @@
 		attack_self(usr)
 
 /obj/item/flashlight/lamp/attack_alien(mob/living/carbon/xenomorph/xeno_attacker)
+	if(xeno_attacker.status_flags & INCORPOREAL)
+		return FALSE
 	xeno_attacker.do_attack_animation(src, ATTACK_EFFECT_SMASH)
 	playsound(loc, 'sound/effects/metalhit.ogg', 20, TRUE)
 	xeno_attacker.visible_message("<span class='danger'>\The [xeno_attacker] smashes [src]!</span>", \

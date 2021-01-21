@@ -116,6 +116,9 @@
 	return FALSE
 
 /obj/machinery/door/firedoor/attack_alien(mob/living/carbon/xenomorph/M)
+	if(M.status_flags & INCORPOREAL)
+		return FALSE
+
 	var/turf/cur_loc = M.loc
 	if(blocked)
 		to_chat(M, "<span class='warning'>\The [src] is welded shut.</span>")

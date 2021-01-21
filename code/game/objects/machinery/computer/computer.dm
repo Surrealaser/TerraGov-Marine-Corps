@@ -191,6 +191,9 @@
 
 ///So Xenos can smash computers out of the way without actually breaking them
 /obj/machinery/computer/attack_alien(mob/living/carbon/xenomorph/X)
+	if(X.status_flags & INCORPOREAL)
+		return FALSE
+
 	if(resistance_flags & INDESTRUCTIBLE)
 		to_chat(X, "<span class='xenowarning'>We're unable to damage this!</span>")
 		return

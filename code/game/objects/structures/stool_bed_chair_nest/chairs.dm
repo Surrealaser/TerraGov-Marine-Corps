@@ -278,6 +278,8 @@
 	..()
 
 /obj/structure/bed/chair/dropship/passenger/attack_alien(mob/living/user)
+	if(user.status_flags & INCORPOREAL)
+		return FALSE
 	if(chair_state != DROPSHIP_CHAIR_BROKEN)
 		user.visible_message("<span class='warning'>[user] smashes \the [src], shearing the bolts!</span>",
 		"<span class='warning'>We smash \the [src], shearing the bolts!</span>")

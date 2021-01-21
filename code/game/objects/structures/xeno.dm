@@ -79,6 +79,8 @@
 	ignore_weed_destruction = TRUE
 
 /obj/effect/alien/resin/sticky/attack_alien(mob/living/carbon/xenomorph/M)
+	if(M.status_flags & INCORPOREAL)
+		return FALSE
 
 	if(M.a_intent == INTENT_HARM) //Clear it out on hit; no need to double tap.
 		M.do_attack_animation(src, ATTACK_EFFECT_CLAW) //SFX
@@ -193,6 +195,9 @@
 	hugger = null
 
 /obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/xenomorph/M)
+	if(M.status_flags & INCORPOREAL)
+		return FALSE
+
 	if(M.a_intent != INTENT_HARM)
 		if(M.xeno_caste.caste_flags & CASTE_CAN_HOLD_FACEHUGGERS)
 			if(!hugger)
@@ -443,6 +448,8 @@
 	Burst(TRUE)//any explosion destroys the egg.
 
 /obj/effect/alien/egg/attack_alien(mob/living/carbon/xenomorph/M)
+	if(M.status_flags & INCORPOREAL)
+		return FALSE
 
 	if(!istype(M))
 		return attack_hand(M)
@@ -686,7 +693,7 @@ TUNNEL
 	attack_alien(user)
 
 /obj/structure/tunnel/attack_alien(mob/living/carbon/xenomorph/M)
-	if(!istype(M) || M.stat || M.lying_angle)
+	if(!istype(M) || M.stat || M.lying_angle || M.status_flags & INCORPOREAL)
 		return
 
 	if(M.a_intent == INTENT_HARM && M == creator)
@@ -968,6 +975,9 @@ TUNNEL
 		return PROCESS_KILL
 
 /obj/structure/resin_jelly_pod/attack_alien(mob/living/carbon/xenomorph/X)
+	if(X.status_flags & INCORPOREAL)
+		return FALSE
+
 	if(X.a_intent == INTENT_HARM && isxenohivelord(X))
 		to_chat(X, "<span class='xenowarning'>We begin tearing at the [src]...</span>")
 		if(do_after(X, HIVELORD_TUNNEL_DISMANTLE_TIME, FALSE, src, BUSY_ICON_BUILD))
@@ -992,6 +1002,9 @@ TUNNEL
 	var/immune_time = 15 SECONDS
 
 /obj/item/resin_jelly/attack_alien(mob/living/carbon/xenomorph/X)
+	if(X.status_flags & INCORPOREAL)
+		return FALSE
+
 	if(X.xeno_caste.caste_flags & CASTE_CAN_HOLD_JELLY)
 		return attack_hand(X)
 	if(X.action_busy)

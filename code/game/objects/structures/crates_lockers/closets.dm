@@ -186,6 +186,9 @@
 		qdel(src)
 
 /obj/structure/closet/attack_alien(mob/living/carbon/xenomorph/M)
+	if(M.status_flags & INCORPOREAL)
+		return FALSE
+
 	if(M.a_intent == INTENT_HARM && !CHECK_BITFIELD(resistance_flags, UNACIDABLE|INDESTRUCTIBLE))
 		M.do_attack_animation(src, ATTACK_EFFECT_SMASH)
 		if(!opened && prob(70))

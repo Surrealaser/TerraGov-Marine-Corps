@@ -122,6 +122,9 @@
 
 
 /obj/machinery/nuclearbomb/attack_alien(mob/living/carbon/xenomorph/X)
+	if(X.status_flags & INCORPOREAL)
+		return FALSE
+
 	if(!timer_enabled)
 		to_chat(X, "<span class='warning'>\The [src] is soundly asleep. We better not disturb it.</span>")
 		return

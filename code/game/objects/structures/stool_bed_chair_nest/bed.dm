@@ -322,6 +322,8 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	radio = new(src)
 
 /obj/structure/bed/medevac_stretcher/attack_alien(mob/living/carbon/xenomorph/xeno_attacker)
+	if(xeno_attacker.status_flags & INCORPOREAL)
+		return FALSE
 	if(buckled_bodybag)
 		unbuckle_bodybag()
 	for(var/m in buckled_mobs)

@@ -180,6 +180,9 @@ GLOBAL_LIST_INIT(vending_white_items, typecacheof(list(
 
 
 /obj/machinery/vending/attack_alien(mob/living/carbon/xenomorph/M)
+	if(M.status_flags & INCORPOREAL)
+		return FALSE
+
 	if(tipped_level)
 		to_chat(M, "<span class='warning'>There's no reason to bother with that old piece of trash.</span>")
 		return FALSE

@@ -415,6 +415,8 @@
 	var/deconstructing = FALSE
 
 /turf/open/lavaland/catwalk/built/attack_alien(mob/living/carbon/xenomorph/M)
+	if(M.status_flags & INCORPOREAL)
+		return
 	if(M.a_intent != INTENT_HARM)
 		return
 	if(deconstructing)

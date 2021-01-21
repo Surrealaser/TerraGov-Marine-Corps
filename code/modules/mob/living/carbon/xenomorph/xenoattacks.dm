@@ -46,6 +46,9 @@
 	if(!ishuman(user))
 		return
 
+	if(status_flags & INCORPOREAL) //Incorporeal xenos cannot attack
+		return
+
 	var/mob/living/carbon/human/H = user
 
 	H.changeNext_move(7)
@@ -88,6 +91,9 @@
 //Hot hot Aliens on Aliens action.
 //Actually just used for eating people.
 /mob/living/carbon/xenomorph/attack_alien(mob/living/carbon/xenomorph/M)
+	if(status_flags & INCORPOREAL) //Incorporeal xenos cannot attack
+		return
+
 	if(src != M)
 		if(isxenolarva(M)) //Larvas can't eat people
 			M.visible_message("<span class='danger'>[M] nudges its head against \the [src].</span>", \

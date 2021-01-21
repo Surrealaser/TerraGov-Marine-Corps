@@ -240,6 +240,9 @@
 		move_mob_inside(user)
 
 /obj/machinery/cryopod/evacuation/attack_alien(mob/living/carbon/xenomorph/user)
+	if(user.status_flags & INCORPOREAL)
+		return
+
 	if(being_forced)
 		to_chat(user, "<span class='xenowarning'>It's being forced open already!</span>")
 		return FALSE

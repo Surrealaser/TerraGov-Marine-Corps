@@ -131,6 +131,8 @@ Stepping directly on the mine will also blow it up
 
 /// Alien attacks trigger the explosive to instantly detonate
 /obj/item/explosive/mine/attack_alien(mob/living/carbon/xenomorph/M)
+	if(M.status_flags & INCORPOREAL)
+		return FALSE
 	if(triggered) //Mine is already set to go off
 		return
 

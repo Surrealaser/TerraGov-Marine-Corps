@@ -393,6 +393,8 @@
 
 //Xenos smashing lights
 /obj/machinery/light/attack_alien(mob/living/carbon/xenomorph/M)
+	if(M.status_flags & INCORPOREAL)
+		return
 	if(status == 2) //Ignore if broken.
 		return FALSE
 	M.do_attack_animation(src, ATTACK_EFFECT_SMASH)

@@ -185,6 +185,9 @@
 	return TRUE
 
 /obj/structure/razorwire/attack_alien(mob/living/carbon/xenomorph/X, damage_amount = X.xeno_caste.melee_damage, damage_type = BRUTE, damage_flag = "", effects = TRUE, armor_penetration = 0)
+	if(X.status_flags & INCORPOREAL)
+		return FALSE
+
 	X.apply_damage(RAZORWIRE_BASE_DAMAGE * 0.7) //About a third as damaging as actually entering
 	UPDATEHEALTH(X)
 	update_icon()

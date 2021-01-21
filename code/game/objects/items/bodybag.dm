@@ -198,6 +198,8 @@
 
 
 /obj/structure/closet/bodybag/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.status_flags & INCORPOREAL)
+		return FALSE
 	if(opened)
 		return FALSE // stop xeno closing things
 	xeno.do_attack_animation(src, ATTACK_EFFECT_CLAW)
